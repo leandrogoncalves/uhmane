@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Uhmane\Http\Requests;
 use Uhmane\Http\Controllers\Controller;
-use \Uhmane\Contatos;
+use \Uhmane\Models\Contatos;
 
 class ContatosController extends Controller
 {

@@ -145,6 +145,11 @@ return [
         Uhmane\Providers\EventServiceProvider::class,
         Uhmane\Providers\RouteServiceProvider::class,
 
+        /*
+         * l5-repository Service provider
+         */
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+
     ],
 
     /*

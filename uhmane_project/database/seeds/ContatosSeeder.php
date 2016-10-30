@@ -11,7 +11,7 @@ class ContatosSeeder extends Seeder
      */
     public function run()
     {
-        \Uhmane\Contatos::truncate();
-        factory(\Uhmane\Contatos::class,10)->create();
+        \Uhmane\Models\Contatos::truncate();
+        factory(\Uhmane\Models\Contatos::class,10)->create();
     }
 }

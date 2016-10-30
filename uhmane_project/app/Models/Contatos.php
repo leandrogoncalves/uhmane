@@ -1,6 +1,6 @@
 <?php
 
-namespace Uhmane;
+namespace Uhmane\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

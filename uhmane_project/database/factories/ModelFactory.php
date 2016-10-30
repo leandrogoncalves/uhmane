@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(Uhmane\User::class, function (Faker\Generator $faker) {
+$factory->define(Uhmane\Models\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->safeEmail,
@@ -20,7 +20,7 @@ $factory->define(Uhmane\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(Uhmane\Contatos::class, function (Faker\Generator $faker) {
+$factory->define(Uhmane\Models\Contatos::class, function (Faker\Generator $faker) {
     return [
         'nome' => $faker->name,
         'endereco' => $faker->streetAddress,
