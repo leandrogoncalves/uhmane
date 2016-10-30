@@ -1,0 +1,80 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: leandro
+ * Date: 30/10/16
+ * Time: 19:17
+ */
+
+namespace Uhmane\Services;
+
+
+use Illuminate\Contracts\Validation\ValidationException;
+use Prettus\Validator\Exceptions\ValidatorException;
+use Uhmane\Repositories\ContatosRepository;
+use Uhmane\Validators\ContatosValidator;
+
+/**
+ * Camada de serviço para regras de negócio especificas para contatos
+ * Class ContatosService
+ * @package Uhmane\Services
+ */
+class ContatosService
+{
+    /**
+     * @var ContatosRepository
+     */
+    protected $repository;
+
+    /**
+     * @var ContatosValidator
+     */
+    protected $validator;
+
+    /**
+     * ContatosService constructor.
+     * @param ContatosRepository $repository
+     */
+    public function __construct(ContatosRepository $repository, ContatosValidator $validator)
+    {
+        $this->repository = $repository;
+        $this->validator = $validator;
+    }
+
+    /**
+     * serviço para criação de um contato
+     * @param array $data
+     * @return mixed
+     */
+    public function create(array $data)
+    {
+        try{
+            $this->validator->with($data)->passesOrFail();
+            return $this->repository->create($data);
+        }catch (ValidatorException $e){
+            return [
+                'error'   => true,
+                'message' => $e->getMessageBag()
+            ];
+        }
+    }
+
+    /**
+     * Serviço para alteração de um contato
+     * @param array $data
+     * @param $id
+     */
+    public function update(array $data, $id)
+    {
+        try{
+            $this->validator->with($data)->passesOrFail();
+            return $this->repository->update($data, $id);
+        }catch (ValidationException $e){
+            return [
+                'error'   => true,
+                'message' => $e->getMessage()
+            ];
+        }
+
+    }
+}

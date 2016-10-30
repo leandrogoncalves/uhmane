@@ -4,6 +4,7 @@ namespace Uhmane\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Uhmane\Repositories\ContatosRepository;
+use Uhmane\Services\ContatosService;
 
 
 class ContatosController extends Controller
@@ -14,14 +15,20 @@ class ContatosController extends Controller
     private $repository;
 
     /**
+     * @var ContatosService
+     */
+    private $service;
+
+    /**
      * ContatosController constructor.
      * Espera uma interface $repository que é uma camada de abstracao de modelo, para remover a injeção de depencia do
      * software
      * @param ContatosRepository $repository
      */
-    public  function __construct(ContatosRepository $repository)
+    public  function __construct(ContatosRepository $repository, ContatosService $service)
     {
         $this->repository = $repository;
+        $this->service = $service;
     }
 
     /**
@@ -52,7 +59,7 @@ class ContatosController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->repository->create($request->all());
+        return $this->service->create($request->all());
     }
 
     /**
@@ -86,7 +93,7 @@ class ContatosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $this->service->update($request->all(), $id);
     }
 
     /**
@@ -97,6 +104,6 @@ class ContatosController extends Controller
      */
     public function destroy($id)
     {
-        $this->repository->find($id)->delete();
+        $this->repository->delete($id);
     }
 }
