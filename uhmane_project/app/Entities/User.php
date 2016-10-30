@@ -1,6 +1,6 @@
 <?php
 
-namespace Uhmane\Models;
+namespace Uhmane\Entities;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

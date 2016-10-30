@@ -3,13 +3,27 @@
 namespace Uhmane\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Uhmane\Repositories\ContatosRepository;
 
-use Uhmane\Http\Requests;
-use Uhmane\Http\Controllers\Controller;
-use \Uhmane\Models\Contatos;
 
 class ContatosController extends Controller
 {
+    /**
+     * @var ContatosRepository
+     */
+    private $repository;
+
+    /**
+     * ContatosController constructor.
+     * Espera uma interface $repository que é uma camada de abstracao de modelo, para remover a injeção de depencia do
+     * software
+     * @param ContatosRepository $repository
+     */
+    public  function __construct(ContatosRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Retorna todos os dados de contatos cadastrados
      *
@@ -17,7 +31,7 @@ class ContatosController extends Controller
      */
     public function index()
     {
-        return Contatos::all();
+        return $this->repository->all();
     }
 
     /**
@@ -38,7 +52,7 @@ class ContatosController extends Controller
      */
     public function store(Request $request)
     {
-        return Contatos::create($request->all());
+        return $this->repository->create($request->all());
     }
 
     /**
@@ -49,7 +63,7 @@ class ContatosController extends Controller
      */
     public function show($id)
     {
-        return Contatos::find($id);
+        return $this->repository->find($id);
     }
 
     /**
@@ -83,6 +97,6 @@ class ContatosController extends Controller
      */
     public function destroy($id)
     {
-        Contatos::find($id)->delete();
+        $this->repository->find($id)->delete();
     }
 }

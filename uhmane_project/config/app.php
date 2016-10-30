@@ -149,6 +149,7 @@ return [
          * l5-repository Service provider
          */
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Uhmane\Providers\UhmaneRepositoryProvider::class,
 
     ],
 
