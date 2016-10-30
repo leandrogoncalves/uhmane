@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//endpoint para obter todos os contatos
+Route::get('contatos', 'ContatosController@index');
+
+//endpoint para inserção de contatos
+Route::post('contatos', 'ContatosController@store');
+
+//endpoint para buscar um contato pelo ID
+Route::get('contatos/{id}', 'ContatosController@show');
+
+//Endpoint para remover um contato
+Route::delete('contatos/{id}', 'ContatosController@destroy');
