@@ -15,14 +15,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//endpoint para obter todos os contatos
-Route::get('contatos', 'ContatosController@index');
+//Rotas para a API de Contatos
+Route::group(['prefix'=>'api'],function(){
+    Route::group(['prefix' => 'contatos'], function(){
+        //endpoint para obter todos os contatos
+        Route::get('', 'ContatosController@index');
 
-//endpoint para inserção de contatos
-Route::post('contatos', 'ContatosController@store');
+        //endpoint para inserção de contatos
+        Route::post('', 'ContatosController@store');
 
-//endpoint para buscar um contato pelo ID
-Route::get('contatos/{id}', 'ContatosController@show');
+        //endpoint para buscar um contato pelo ID
+        Route::get('{id}', 'ContatosController@show');
 
-//Endpoint para remover um contato
-Route::delete('contatos/{id}', 'ContatosController@destroy');
+        //endpoint para alterar um contato pelo ID
+        Route::put('{id}', 'ContatosController@update');
+
+        //Endpoint para remover um contato
+        Route::delete('{id}', 'ContatosController@destroy');
+
+    });
+});
+
