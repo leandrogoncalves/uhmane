@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Uhmane\Events;
 
 abstract class Event
 {
