@@ -9,7 +9,7 @@
 namespace Uhmane\Services;
 
 
-use Illuminate\Contracts\Validation\ValidationException;
+use Illuminate\Http\Response;
 use Prettus\Validator\Exceptions\ValidatorException;
 use Uhmane\Repositories\ContatosRepository;
 use Uhmane\Validators\ContatosValidator;
@@ -41,6 +41,24 @@ class ContatosService
         $this->validator = $validator;
     }
 
+
+    /**
+     * serviço para criação de um contato
+     * @param array $data
+     * @return mixed
+     */
+    public function find($id)
+    {
+        try{
+            return $this->repository->find($id);
+        }catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            return Response::create([
+                'message'=> 'Nenhum contato encontrado'
+            ],400);
+        }
+    }
+
+
     /**
      * serviço para criação de um contato
      * @param array $data
@@ -69,12 +87,33 @@ class ContatosService
         try{
             $this->validator->with($data)->passesOrFail();
             return $this->repository->update($data, $id);
-        }catch (ValidationException $e){
+        }catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            return Response::create([
+                'message'=> 'Nenhum contato encontrado'
+            ],400);
+        }catch (ValidatorException $e){
             return [
                 'error'   => true,
                 'message' => $e->getMessage()
             ];
         }
 
+    }
+
+    /**
+     * Serviço para exclusao de um contato
+     * @param array $data
+     * @param $id
+     */
+    public function delete($id)
+    {
+        try{
+            $this->repository->find($id);
+            $this->repository->delete($id);
+        }catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            return Response::create([
+                'message'=> 'Nenhum contato encontrado'
+            ],400);
+        }
     }
 }

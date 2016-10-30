@@ -3,6 +3,8 @@
 namespace Uhmane\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Symfony\Component\HttpFoundation\Response;
 use Uhmane\Repositories\ContatosRepository;
 use Uhmane\Services\ContatosService;
 
@@ -70,7 +72,7 @@ class ContatosController extends Controller
      */
     public function show($id)
     {
-        return $this->repository->find($id);
+        return $this->service->find($id);
     }
 
     /**
@@ -104,6 +106,6 @@ class ContatosController extends Controller
      */
     public function destroy($id)
     {
-        $this->repository->delete($id);
+       return  $this->service->delete($id);
     }
 }
