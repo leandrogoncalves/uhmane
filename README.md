@@ -41,17 +41,22 @@ DB_USERNAME=root
 DB_PASSWORD=root
 ```
 
-6-Faça a migração das tabelas e crie registros de teste
+6-Gere a chave de criptografia a aplicacao
+
+```sh
+$ php artisan key:generate
+
+7-Faça a migração das tabelas e crie registros de teste
 
 ```sh
 $ php artisan migrate
 $ php artisan db:seed
 ```
 
-7-Use o artisan serve para rodar o servidor php builtin
+8-Use o artisan serve para rodar o servidor php builtin
 
 ```sh
 $ php artisan serve
 ```
 
-8-Abra o browser e acesse o link http://localhost:8000
+9-Abra o browser e acesse o link http://localhost:8000
