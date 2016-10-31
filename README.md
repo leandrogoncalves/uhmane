@@ -45,6 +45,7 @@ DB_PASSWORD=root
 
 ```sh
 $ php artisan key:generate
+```
 
 7-Faça a migração das tabelas e crie registros de teste
 
