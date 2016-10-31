@@ -25,6 +25,22 @@ $mysql>>>> create database db_uhmane;
 $mysql>>>> exit;
 ```
 
+4 - Renomeie o arquivo para .env
+
+```sh
+$ mv .env.example .env
+```
+
+5 - Configure a conexão com o banco de dados
+
+```sh
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_DATABASE=db_uhmane
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
 4-Faça a migração das tabelas e crie registros de teste
 
 ```sh
