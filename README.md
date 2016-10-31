@@ -25,7 +25,7 @@ $mysql>>>> create database db_uhmane;
 $mysql>>>> exit;
 ```
 
-4 - Renomeie o arquivo para .env
+4 - Renomeie o arquivo .env.example da raiz do projeto  para .env
 
 ```sh
 $ mv .env.example .env
