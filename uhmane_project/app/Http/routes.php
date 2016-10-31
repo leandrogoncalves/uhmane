@@ -19,20 +19,25 @@ Route::get('/', function () {
 Route::group(['prefix'=>'api'],function(){
     Route::group(['prefix' => 'contatos'], function(){
         //endpoint para obter todos os contatos
-        Route::get('', 'ContatosController@index');
+        Route::get('', 'ApiContatosController@index');
 
         //endpoint para inserção de contatos
-        Route::post('', 'ContatosController@store');
+        Route::post('', 'ApiContatosController@store');
 
         //endpoint para buscar um contato pelo ID
-        Route::get('{id}', 'ContatosController@show');
+        Route::get('{id}', 'ApiContatosController@show');
 
         //endpoint para alterar um contato pelo ID
-        Route::put('{id}', 'ContatosController@update');
+        Route::put('{id}', 'ApiContatosController@update');
 
         //Endpoint para remover um contato
-        Route::delete('{id}', 'ContatosController@destroy');
+        Route::delete('{id}', 'ApiContatosController@destroy');
 
     });
 });
+
+Route::get('docs','DocsController@index');
+
+Route::get('contatos','ContatosController@index');
+
 

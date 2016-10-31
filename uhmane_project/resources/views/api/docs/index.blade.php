@@ -1,10 +1,10 @@
 @extends('template')
 
 @section('title')
-    Home
+    Documentação da API
 @stop
 
 
 @section('content')
-    <h1>Uhmane API</h1>
+    <h1>Documentação da API</h1>
 @stop

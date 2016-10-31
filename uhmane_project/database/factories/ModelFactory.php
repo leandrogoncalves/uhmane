@@ -24,7 +24,6 @@ $factory->define(Uhmane\Entities\Contatos::class, function (Faker\Generator $fak
     return [
         'nome' => $faker->name,
         'endereco' => $faker->streetAddress,
-        'cidade' => $faker->city,
         'telefone' => $faker->phoneNumber,
         'celular' => $faker->phoneNumber,
         'email' => $faker->safeEmail

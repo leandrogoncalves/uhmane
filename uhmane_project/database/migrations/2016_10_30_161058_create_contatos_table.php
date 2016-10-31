@@ -16,13 +16,9 @@ class CreateContatosTable extends Migration
             $table->increments('id');
             $table->string('nome', 100);
             $table->string('endereco',150)->nullable(true);
-            $table->string('bairro',100)->nullable(true);
-            $table->string('cidade',100)->nullable(true);
-            $table->string('estado',50)->nullable(true);
             $table->string('telefone',12)->nullable(true);
             $table->string('celular',13)->nullable(true);
             $table->string('email',50)->nullable(true);
-            $table->string('site',50)->nullable(true);
             $table->timestamps();
         });
     }
